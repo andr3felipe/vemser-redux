@@ -19,7 +19,7 @@ export function Cart() {
 
   return (
     <Drawer direction="right">
-      <DrawerTrigger className="flex gap-2 items-center">
+      <DrawerTrigger className="flex items-center gap-2">
         Carrinho <ShoppingCart size={32} />
       </DrawerTrigger>
       <DrawerContent className="top-0 mt-0 right-0 min-w-[300px]">
@@ -27,7 +27,7 @@ export function Cart() {
           <DrawerTitle>Carrinho</DrawerTitle>
           <DrawerDescription>Boa compra!</DrawerDescription>
         </DrawerHeader>
-        <div className="text-center text-card-foreground flex flex-col gap-14">
+        <div className="flex flex-col overflow-scroll text-center text-card-foreground gap-14 sm:max-h-[70vh] max-h-[60vh]">
           {cart.length > 0 ? (
             cart.map((product) => (
               <CartItem key={product.id} product={product} />

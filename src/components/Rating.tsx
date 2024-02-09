@@ -19,32 +19,38 @@ export function Rating({
 
   return (
     <div className="group/rating w-min">
-      <div className="hidden  group-hover/rating:flex">
+      <div className="hidden group-hover/rating:flex">
         {[...Array(5)].map((_, index) => {
           const isFilled = index < filled;
 
           if (isFilled) {
             return (
-              <Star
-                className="cursor-pointer"
+              <button
                 key={index}
-                size={"1.5rem"}
-                weight="fill"
                 onMouseOver={() => setFilled(index + 1)}
                 onClick={handleClick}
-              />
+              >
+                <Star
+                  className="cursor-pointer"
+                  size={"1.5rem"}
+                  weight="fill"
+                />
+              </button>
             );
           }
 
           return (
-            <Star
-              className="cursor-pointer"
+            <button
               key={index}
-              size={"1.5rem"}
-              weight="regular"
               onMouseOver={() => setFilled(index + 1)}
               onClick={handleClick}
-            />
+            >
+              <Star
+                className="cursor-pointer"
+                size={"1.5rem"}
+                weight="regular"
+              />
+            </button>
           );
         })}
       </div>
@@ -54,10 +60,10 @@ export function Rating({
           const isFilled = index < rating;
 
           if (isFilled) {
-            return <Star size={"1.5rem"} weight="fill" />;
+            return <Star key={index} size={"1.5rem"} weight="fill" />;
           }
 
-          return <Star size={"1.5rem"} weight="regular" />;
+          return <Star key={index} size={"1.5rem"} weight="regular" />;
         })}
       </div>
     </div>

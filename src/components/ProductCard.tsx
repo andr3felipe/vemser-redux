@@ -11,6 +11,7 @@ import { Button } from "./ui/button";
 import { useDispatch } from "react-redux";
 import { add } from "@/features/cart/cartSlice";
 import { Rating } from "./Rating";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProductCardProps {
   product: Product;
@@ -18,9 +19,14 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const dispatch = useDispatch();
+  const { toast } = useToast();
 
   function addToCart(product: Product) {
     dispatch(add({ ...product, quantity: 1 }));
+    toast({
+      title: product.title,
+      description: "Adicionado ao carrinho!",
+    });
   }
 
   return (
@@ -31,13 +37,13 @@ export function ProductCard({ product }: ProductCardProps) {
         <img
           src={product.image}
           alt={product.title}
-          className="w-40 h-40 m-auto"
+          className="object-contain w-40 h-40 m-auto"
         />
       </CardHeader>
 
       <CardContent>
         <CardTitle className="text-card-foreground">{product.title}</CardTitle>
-        <CardDescription className="mt-3 text-card-foreground font-medium">
+        <CardDescription className="mt-3 font-medium text-card-foreground">
           R$ {product.price.toFixed(2)}
         </CardDescription>
       </CardContent>

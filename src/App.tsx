@@ -5,6 +5,7 @@ import { RootState } from "./store";
 import { ProductCard } from "./components/ProductCard";
 import { Header } from "./components/Header";
 import { Filter } from "./components/Filter";
+import { Toaster } from "@/components/ui/toaster";
 
 function App() {
   const { products } = useSelector((state: RootState) => state.products);
@@ -27,19 +28,23 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen max-w-screen">
-      <Header />
+    <>
+      <div className="min-h-screen max-w-screen">
+        <Header />
 
-      <div className="pl-2 pr-2 pt-12 pb-12 m-auto flex flex-col items-start gap-8 max-w-[1440px] justify-center">
-        <Filter />
+        <div className="pl-2 pr-2 pt-12 pb-12 m-auto flex flex-col items-start gap-8 max-w-[1440px] justify-center">
+          <Filter />
 
-        <div className="m-auto flex flex-wrap items-start gap-8 justify-center">
-          {sortedProducts?.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          <div className="flex flex-wrap items-start justify-center gap-8 m-auto">
+            {sortedProducts?.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+
+      <Toaster />
+    </>
   );
 }
 

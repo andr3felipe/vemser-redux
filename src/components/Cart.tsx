@@ -27,7 +27,7 @@ export function Cart() {
           <DrawerTitle>Carrinho</DrawerTitle>
           <DrawerDescription>Boa compra!</DrawerDescription>
         </DrawerHeader>
-        <div className="flex flex-col overflow-scroll text-center text-card-foreground gap-14 sm:max-h-[70vh] max-h-[60vh]">
+        <div className="flex flex-col overflow-auto text-center text-card-foreground gap-14 sm:max-h-[70vh] max-h-[60vh]">
           {cart.length > 0 ? (
             cart.map((product) => (
               <CartItem key={product.id} product={product} />

@@ -9,13 +9,12 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "./ui/button";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
+import { useAppSelector } from "@/store";
 import { ShoppingCart } from "@phosphor-icons/react";
 import { CartItem } from "./CartItem";
 
 export function Cart() {
-  const { cart } = useSelector((state: RootState) => state.cart);
+  const { cart } = useAppSelector((state) => state.cart);
 
   return (
     <Drawer direction="right">

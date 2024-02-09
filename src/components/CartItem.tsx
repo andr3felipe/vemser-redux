@@ -2,14 +2,14 @@ import { Product } from "@/features/cart/cartSlice";
 import { Button } from "./ui/button";
 import { Minus, Plus, Trash } from "@phosphor-icons/react";
 import { remove, changeQuantity } from "@/features/cart/cartSlice";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/store";
 
 interface CartItemProps {
   product: Product;
 }
 
 export function CartItem({ product }: CartItemProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleRemove(id: number) {
     dispatch(remove(id));

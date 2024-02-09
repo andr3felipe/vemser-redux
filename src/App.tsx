@@ -1,15 +1,14 @@
 import "./global.css";
-import { useSelector } from "react-redux";
 
-import { RootState } from "./store";
+import { useAppSelector } from "./store";
 import { ProductCard } from "./components/ProductCard";
 import { Header } from "./components/Header";
 import { Filter } from "./components/Filter";
 import { Toaster } from "@/components/ui/toaster";
 
 function App() {
-  const { products } = useSelector((state: RootState) => state.products);
-  const { orderBy } = useSelector((state: RootState) => state.products);
+  const { products } = useAppSelector((state) => state.products);
+  const { orderBy } = useAppSelector((state) => state.products);
 
   const sortedProducts = [...products]?.sort((a, b) => {
     if (orderBy === "name") {

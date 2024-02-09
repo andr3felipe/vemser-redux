@@ -1,7 +1,7 @@
 import { Star } from "@phosphor-icons/react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { rate } from "@/features/products/productsSlice";
+import { useAppDispatch } from "@/store";
 
 export function Rating({
   rating,
@@ -11,7 +11,7 @@ export function Rating({
   productId: number;
 }) {
   const [filled, setFilled] = useState(0);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleClick() {
     dispatch(rate({ id: productId, rating: filled }));

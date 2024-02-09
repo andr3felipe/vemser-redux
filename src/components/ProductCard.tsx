@@ -8,17 +8,17 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { useDispatch } from "react-redux";
 import { add } from "@/features/cart/cartSlice";
 import { Rating } from "./Rating";
 import { useToast } from "@/components/ui/use-toast";
+import { useAppDispatch } from "@/store";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { toast } = useToast();
 
   function addToCart(product: Product) {

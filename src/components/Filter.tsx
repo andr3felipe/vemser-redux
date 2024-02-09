@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
 import { setOrderBy } from "@/features/products/productsSlice";
+import { useAppDispatch } from "@/store";
 
 export function Filter() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleFilter(e: React.ChangeEvent<HTMLSelectElement>) {
     dispatch(

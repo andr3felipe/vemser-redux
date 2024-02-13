@@ -4,13 +4,11 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface Product {
   id: number;
   title: string;
+  image: string;
   price: number;
   quantity: number;
   description: string;
   category: string;
-  image: string;
-  rating: number;
-  ratings: number[];
 }
 
 export interface CartState {

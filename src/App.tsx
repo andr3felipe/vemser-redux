@@ -1,50 +1,9 @@
 import "./global.css";
-
-import { useAppSelector } from "./store";
-import { ProductCard } from "./components/ProductCard";
-import { Header } from "./components/Header";
-import { Filter } from "./components/Filter";
-import { Toaster } from "@/components/ui/toaster";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Router";
 
 function App() {
-  const { products } = useAppSelector((state) => state.products);
-  const { orderBy } = useAppSelector((state) => state.products);
-
-  const sortedProducts = [...products]?.sort((a, b) => {
-    if (orderBy === "name") {
-      return a.title.localeCompare(b.title);
-    }
-
-    if (orderBy === "price") {
-      return a.price - b.price;
-    }
-
-    if (orderBy === "rating") {
-      return b.rating - a.rating;
-    }
-
-    return a.id - b.id;
-  });
-
-  return (
-    <>
-      <div className="min-h-screen max-w-screen">
-        <Header />
-
-        <div className="pl-2 pr-2 pt-12 pb-12 m-auto flex flex-col items-start gap-8 max-w-[1440px] justify-center">
-          <Filter />
-
-          <div className="flex flex-wrap items-start justify-center gap-8 m-auto">
-            {sortedProducts?.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <Toaster />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

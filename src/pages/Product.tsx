@@ -318,7 +318,7 @@ export function Product() {
                   Submit
                 </Button>
               </form>
-              {form.formState.isSubmitted && (
+              {form.formState.isSubmitSuccessful && (
                 <p className="text-green-700">Review submitted successfully!</p>
               )}
             </Form>

@@ -1,50 +1,41 @@
 import "./global.css";
-
-import { useAppSelector } from "./store";
-import { ProductCard } from "./components/ProductCard";
-import { Header } from "./components/Header";
-import { Filter } from "./components/Filter";
-import { Toaster } from "@/components/ui/toaster";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Router";
+import { useEffect } from "react";
+import { fetchProducts } from "./redux/features/productsSlice";
+import { useProducts, useStatus } from "./redux/hooks/productsHooks";
+import { useAppDispatch } from "./redux/hooks/reduxTypedHooks";
+import { setInitialReviews } from "./redux/features/reviewsSlice";
 
 function App() {
-  const { products } = useAppSelector((state) => state.products);
-  const { orderBy } = useAppSelector((state) => state.products);
+  const status = useStatus();
+  const products = useProducts();
+  const dispatch = useAppDispatch();
 
-  const sortedProducts = [...products]?.sort((a, b) => {
-    if (orderBy === "name") {
-      return a.title.localeCompare(b.title);
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
     }
+  }, [status, dispatch]);
 
-    if (orderBy === "price") {
-      return a.price - b.price;
-    }
+  useEffect(() => {
+    products?.map((product) => {
+      dispatch(
+        setInitialReviews({
+          productId: product.id,
+          review: {
+            name: "Anonymous",
+            rating: Math.round(product.rating.rate),
+            comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            date: JSON.stringify(new Date()),
+            recommend: product.rating.rate >= 3,
+          },
+        })
+      );
+    });
+  }, [products, dispatch]);
 
-    if (orderBy === "rating") {
-      return b.rating - a.rating;
-    }
-
-    return a.id - b.id;
-  });
-
-  return (
-    <>
-      <div className="min-h-screen max-w-screen">
-        <Header />
-
-        <div className="pl-2 pr-2 pt-12 pb-12 m-auto flex flex-col items-start gap-8 max-w-[1440px] justify-center">
-          <Filter />
-
-          <div className="flex flex-wrap items-start justify-center gap-8 m-auto">
-            {sortedProducts?.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <Toaster />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

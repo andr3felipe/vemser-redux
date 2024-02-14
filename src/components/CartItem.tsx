@@ -1,9 +1,8 @@
-import { Product } from "@/features/cart/cartSlice";
+import { Product } from "@/redux/features/cartSlice";
 import { Button } from "./ui/button";
 import { Minus, Plus, Trash } from "@phosphor-icons/react";
-import { remove, changeQuantity } from "@/features/cart/cartSlice";
-import { useAppDispatch } from "@/store";
-
+import { remove, changeQuantity } from "@/redux/features/cartSlice";
+import { useAppDispatch } from "@/redux/hooks/reduxTypedHooks";
 interface CartItemProps {
   product: Product;
 }
@@ -24,6 +23,7 @@ export function CartItem({ product }: CartItemProps) {
   }) {
     dispatch(changeQuantity({ action, id }));
   }
+
   return (
     <div className="max-w-[300px] flex flex-col gap-2 items-center justify-center border-b-2 border-primary pt-8 mx-2 rounded-lg shadow-lg pb-2">
       <div className="flex flex-row flex-wrap justify-around w-full gap-4">
@@ -34,6 +34,7 @@ export function CartItem({ product }: CartItemProps) {
           >
             <Plus size={"1rem"} weight="bold" />
           </Button>
+
           <Button
             className="px-2 py-2 text-xs"
             onClick={() => handleIQuantiy({ action: "remove", id: product.id })}

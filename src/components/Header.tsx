@@ -1,25 +1,40 @@
-import { Cart } from "./Cart";
-import { useAppSelector } from "@/store";
+import { HouseLine, ShoppingBagOpen } from "@phosphor-icons/react";
+import { NavLink, useLocation } from "react-router-dom";
+import { HeaderMobile } from "./HeaderMobile";
 
 export function Header() {
-  const { cart } = useAppSelector((state) => state.cart);
+  const location = useLocation();
 
   return (
-    <div className="p-8 font-bold border-b-2 bg-primary text-primary-foreground border-cyan-300">
-      <div className="max-w-[1400px] mx-auto flex justify-between items-center">
-        <a href="/" className="text-xl hover:text-cyan-300">
+    <div className="px-4 py-8 font-bold border-b-2 bg-primary text-primary-foreground border-cyan-300">
+      <nav className="max-w-[1440px] mx-auto grid grid-cols-2 justify-between items-center">
+        <NavLink to="/" className="text-3xl hover:text-cyan-300">
           Redux Store
-        </a>
+        </NavLink>
 
-        <div className="relative hover:cursor-pointer hover:text-cyan-300">
-          <Cart />
-          {cart.length > 0 && (
-            <span className="absolute top-[-20px] right-[-15px] font-bold bg-primary-foreground text-primary px-[0.35rem] rounded-lg flex items-center justify-center">
-              {cart.length}
-            </span>
+        <div className="items-center justify-center hidden gap-20 sm:flex">
+          {location.pathname !== "/" && (
+            <NavLink
+              to={"/"}
+              className="flex items-center justify-center gap-2 text-xl hover:cursor-pointer hover:text-cyan-300"
+            >
+              <HouseLine size={32} /> Home
+            </NavLink>
+          )}
+
+          {location.pathname !== "/store" && (
+            <NavLink
+              to={"/store"}
+              className="flex items-center justify-center gap-2 text-xl hover:cursor-pointer hover:text-cyan-300"
+            >
+              <ShoppingBagOpen size={32} />
+              Store
+            </NavLink>
           )}
         </div>
-      </div>
+
+        <HeaderMobile />
+      </nav>
     </div>
   );
 }

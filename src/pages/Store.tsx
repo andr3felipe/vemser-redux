@@ -1,45 +1,19 @@
 import { OrderBy } from "@/components/OrderBy";
 import { ProductCard } from "@/components/ProductCard";
-import { fetchProducts } from "@/redux/features/productsSlice";
-import { setInitialReviews } from "@/redux/features/reviewsSlice";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   useStatus,
   useProducts,
   useOrderBy,
 } from "@/redux/hooks/productsHooks";
-import { useAppDispatch } from "@/redux/hooks/reduxTypedHooks";
 import { useReviews } from "@/redux/hooks/reviewsHooks";
-import { useEffect } from "react";
 
 export function Store() {
   const status = useStatus();
   const products = useProducts();
   const orderBy = useOrderBy();
-  const dispatch = useAppDispatch();
+
   const reviews = useReviews();
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [status, dispatch]);
-
-  useEffect(() => {
-    products?.map((product) => {
-      dispatch(
-        setInitialReviews({
-          productId: product.id,
-          review: {
-            name: "Anonymous",
-            rating: Math.round(product.rating.rate),
-            comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            date: JSON.stringify(new Date()),
-            recommend: product.rating.rate >= 3,
-          },
-        })
-      );
-    });
-  }, [products, dispatch]);
 
   const sortedProducts = [...products]?.sort((a, b) => {
     if (orderBy === "name-asc") {
@@ -78,7 +52,7 @@ export function Store() {
 
   return (
     <>
-      <div className="min-h-screen max-w-screen">
+      <div className="min-h-screen pb-12 max-w-screen">
         <div className="pl-4 pr-4 pt-12 pb-12 m-auto flex flex-col items-start gap-8 max-w-[1440px] justify-center">
           <h1 className="text-3xl font-bold">Our products</h1>
           <div className="flex items-center justify-end w-full">
@@ -91,7 +65,14 @@ export function Store() {
                 <ProductCard key={product.id} product={product} />
               ))
             ) : (
-              <p>Loading...</p>
+              <div className="flex flex-wrap items-start justify-center m-auto gap-y-12 gap-x-8">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    className="w-[22rem] h-[25rem] rounded-lg bg-muted shadow-md"
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>

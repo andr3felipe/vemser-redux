@@ -1,5 +1,6 @@
 import { HouseLine, ShoppingBagOpen } from "@phosphor-icons/react";
 import { NavLink, useLocation } from "react-router-dom";
+import { HeaderMobile } from "./HeaderMobile";
 
 export function Header() {
   const location = useLocation();
@@ -11,7 +12,7 @@ export function Header() {
           Redux Store
         </NavLink>
 
-        <div className="flex items-center justify-center gap-20">
+        <div className="items-center justify-center hidden gap-20 sm:flex">
           {location.pathname !== "/" && (
             <NavLink
               to={"/"}
@@ -31,6 +32,8 @@ export function Header() {
             </NavLink>
           )}
         </div>
+
+        <HeaderMobile />
       </nav>
     </div>
   );

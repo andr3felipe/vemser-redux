@@ -20,7 +20,9 @@ export function OrderBy() {
 
   return (
     <div className="self-end font-medium">
-      <label htmlFor="filter">Ordenar por: </label>
+      <label htmlFor="filter">
+        <h2 className="inline">Ordenar por: </h2>
+      </label>
       <select
         onChange={handleFilter}
         id="filter"

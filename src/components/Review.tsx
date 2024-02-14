@@ -21,14 +21,14 @@ export function Review({ review }: ReviewProps) {
       <div className="flex flex-col mt-2">
         <p>
           {review.name}
-          <span className="ml-2 text-xs text-gray-400">{date}</span>
+          <span className="ml-2 text-xs text-gray-700">{date}</span>
         </p>
 
         {review.recommend && (
-          <p className="text-green-400">I recommend this product!</p>
+          <p className="text-green-700">I recommend this product!</p>
         )}
         {!review.recommend && (
-          <p className="text-red-400">I don't recommend this product!</p>
+          <p className="text-red-700">I don't recommend this product!</p>
         )}
       </div>
     </div>

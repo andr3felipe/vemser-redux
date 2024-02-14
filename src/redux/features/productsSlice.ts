@@ -76,7 +76,7 @@ export const productsSlice = createSlice({
       });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.status = "failed";
-      state.error = action.error.message ?? "Algo deu errado";
+      state.error = action.error.message ?? "Something went wrong.";
     });
   },
 });

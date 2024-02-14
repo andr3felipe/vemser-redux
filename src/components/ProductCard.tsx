@@ -51,7 +51,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <CardTitle className="text-md text-card-foreground">
             {product.title}
           </CardTitle>
-          <CardDescription className="mt-3 font-medium text-green-400 text-md">
+          <CardDescription className="mt-3 font-medium text-green-700 text-md">
             {formatPrice(product.price)}
           </CardDescription>
         </CardContent>

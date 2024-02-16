@@ -1,15 +1,12 @@
 import { OrderBy } from "@/components/OrderBy";
 import { ProductCard } from "@/components/ProductCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  useStatus,
-  useProducts,
-  useOrderBy,
-} from "@/redux/hooks/productsHooks";
+import { useGetAllProductsQuery } from "@/redux/api/fakeStoreApi/fakeStoreApi";
+import { useProducts, useOrderBy } from "@/redux/hooks/productsHooks";
 import { useReviews } from "@/redux/hooks/reviewsHooks";
 
 export function Store() {
-  const status = useStatus();
+  const { isLoading } = useGetAllProductsQuery();
   const products = useProducts();
   const orderBy = useOrderBy();
 
@@ -60,7 +57,7 @@ export function Store() {
           </div>
 
           <div className="flex flex-wrap items-start justify-center m-auto gap-y-12 gap-x-8">
-            {status === "succeeded" ? (
+            {!isLoading ? (
               sortedProducts?.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))

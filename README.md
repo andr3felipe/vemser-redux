@@ -1,30 +1,79 @@
-# React + TypeScript + Vite
+<h1 align="center"> React Movies </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  Bem-vindo ao projeto React Movies!<br/>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-instalacao-do-projeto">Instalação do projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-sobre-o-projeto">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-integrantes">Integrantes</a>&nbsp;&nbsp;&nbsp;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+</p>
 
-## Expanding the ESLint configuration
+<p align="center">
+  <img width="500" alt="imagem da página inicial do site pronto" src="./src/assets/vem-ser.png">
+</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Tecnologias <br id="-tecnologias">
 
-- Configure the top-level `parserOptions` property like this:
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Typescript
+- React
+- Tailwind
+- Redux Toolkit
+- Shadcn/ui
+- Dayjs
+- React Router Dom
+- Phosphor-icons
+- Zod
+- React Hook Form
+- API's (reqresApi, fakeStoreApi)
+
+## ⚙️ Instalação do projeto <br id="-instalacao-do-projeto">
+
+### Passo-a-passo:
+
+#### 1. Clone o repositório para o seu computador usando o seguinte comando:
+
+```bash
+git clone git@github.com:andr3felipe/vemser-redux.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### 2. Navegue até o diretório do projeto:
+
+```bash
+cd vemser-redux
+```
+
+#### 3. Instale as dependências do projeto:
+
+```bash
+npm install
+# or
+yarn
+```
+
+#### 3. Inicie um servidor de desenvolvimento:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+## 💻 Sobre o Projeto <br id="-sobre-o-projeto">
+
+Este projeto tem como objetivo simular um e-commerce, algumas das funcionalidades são:
+
+- Listagem de produtos;
+- Detalhar produto;
+- Adicionar ao carrinho;
+- Remover do carrinho;
+- Alterar quantidade;
+- Filtro de ordenação;
+- Avaliar produtos;
+- Registro;
+- Login;

@@ -2,21 +2,27 @@ import "./global.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Router";
 import { useEffect } from "react";
-import { fetchProducts } from "./redux/features/productsSlice";
-import { useProducts, useStatus } from "./redux/hooks/productsHooks";
+import { setProducts } from "./redux/features/productsSlice";
+import { useProducts } from "./redux/hooks/productsHooks";
 import { useAppDispatch } from "./redux/hooks/reduxTypedHooks";
 import { setInitialReviews } from "./redux/features/reviewsSlice";
+import { useGetAllProductsQuery } from "./redux/api/fakeStoreApi/fakeStoreApi";
 
 function App() {
-  const status = useStatus();
   const products = useProducts();
   const dispatch = useAppDispatch();
 
+  const { data, error } = useGetAllProductsQuery();
+
+  if (error) {
+    console.error(error);
+  }
+
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
+    if (data) {
+      dispatch(setProducts(data));
     }
-  }, [status, dispatch]);
+  }, [data, dispatch]);
 
   useEffect(() => {
     products?.map((product) => {

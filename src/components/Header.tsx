@@ -1,9 +1,15 @@
-import { HouseLine, ShoppingBagOpen } from "@phosphor-icons/react";
+import {
+  HouseLine,
+  ShoppingBagOpen,
+  SignIn,
+  User,
+} from "@phosphor-icons/react";
 import { NavLink, useLocation } from "react-router-dom";
 import { HeaderMobile } from "./HeaderMobile";
 
 export function Header() {
   const location = useLocation();
+  const token = localStorage.getItem("token");
 
   return (
     <div className="px-4 py-8 font-bold border-b-2 bg-primary text-primary-foreground border-cyan-300">
@@ -29,6 +35,24 @@ export function Header() {
             >
               <ShoppingBagOpen size={32} />
               Store
+            </NavLink>
+          )}
+
+          {location.pathname !== "/login" && !token && (
+            <NavLink
+              to={"/login"}
+              className="flex items-center justify-center gap-2 text-xl hover:cursor-pointer hover:text-cyan-300"
+            >
+              <SignIn size={32} /> Login
+            </NavLink>
+          )}
+
+          {location.pathname !== "/auth/panel" && token && (
+            <NavLink
+              to={"/auth/panel"}
+              className="flex items-center justify-center gap-2 text-xl hover:cursor-pointer hover:text-cyan-300"
+            >
+              <User size={32} /> Panel
             </NavLink>
           )}
         </div>

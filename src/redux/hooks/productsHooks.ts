@@ -13,11 +13,6 @@ export const useGetProductById = ({ id }: { id: number }) => {
   return product ?? null;
 };
 
-export const useStatus = () => {
-  const { status } = useAppSelector((state) => state.products);
-  return status;
-};
-
 export const useOrderBy = () => {
   const { orderBy } = useAppSelector((state) => state.products);
   return orderBy;

@@ -1,4 +1,4 @@
-import { Product } from "../features/productsSlice";
+import { Product } from "../api/fakeStoreApi/types";
 import { useAppSelector } from "./reduxTypedHooks";
 
 export const useProducts = () => {

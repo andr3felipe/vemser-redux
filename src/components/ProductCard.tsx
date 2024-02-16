@@ -7,10 +7,10 @@ import {
 } from "./ui/card";
 import { Rating } from "./Rating";
 
-import { Product } from "@/redux/features/productsSlice";
 import { NavLink } from "react-router-dom";
 import { formatPrice } from "@/lib/utils";
 import { useGetReviewsById } from "@/redux/hooks/reviewsHooks";
+import { Product } from "@/redux/api/fakeStoreApi/types";
 
 interface ProductCardProps {
   product: Product;

@@ -1,7 +1,7 @@
-<h1 align="center"> React Movies </h1>
+<h1 align="center"> Redux Store </h1>
 
 <p align="center">
-  Bem-vindo ao projeto React Movies!<br/>
+  Bem-vindo ao projeto Redux Store!<br/>
 </p>
 
 <p align="center">
